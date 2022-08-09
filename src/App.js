@@ -1,7 +1,7 @@
-import logo from './logo.svg';
-import './App.css';
-import React from 'react';
-import Title from './tittle';
+import "./App.css";
+import React from "react";
+import Title from "./tittle";
+import Form from "./form";
 
 // function App() {
 //   return (
@@ -25,13 +25,12 @@ import Title from './tittle';
 // }
 
 class App extends React.Component {
-
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
-      name: ""
-    }
+      name: "",
+    };
   }
 
   // static getDerivedStateFromProps(props, state) {
@@ -49,13 +48,13 @@ class App extends React.Component {
     // request al backend
     setTimeout(() => {
       this.setState({
-        name: "Pablo"
-      })
-    }, 2000)
+        name: "Pablo",
+      });
+    }, 2000);
   }
 
   componentDidUpdate() {
-    console.log('Ya se actualizo nuestro componente! ')
+    console.log("Ya se actualizo nuestro componente! ");
   }
 
   // componentWillUnmount() {
@@ -64,10 +63,11 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <React.Fragment>
         <Title text={this.state.name} />
-      </div>
-    )
+        <Form />
+      </React.Fragment>
+    );
   }
 }
 
