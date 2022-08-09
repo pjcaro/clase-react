@@ -1,8 +1,8 @@
-import React from "react";
+import { useState } from "react";
 
 const useForm = (initialState = {}, onSubmit) => {
-    const [formData, setFormData] = React.useState(initialState);
-    const [errors, setErrors] = React.useState({});
+    const [formData, setFormData] = useState(initialState);
+    const [errors, setErrors] = useState({});
 
     const handleInputChange = (e) => {
         const form = { ...formData, [e.target.name]: e.target.value }
