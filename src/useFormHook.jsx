@@ -1,6 +1,6 @@
 import React from "react";
 
-const useForm = (initialState = {}, onSubmit, validations = []) => {
+const useForm = (initialState = {}, onSubmit) => {
     const [formData, setFormData] = React.useState(initialState);
     const [errors, setErrors] = React.useState({});
 
