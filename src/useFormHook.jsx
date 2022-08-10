@@ -1,8 +1,13 @@
+import { useEffect } from "react";
 import { useState } from "react";
 
 const useForm = (initialState = {}, onSubmit) => {
     const [formData, setFormData] = useState(initialState);
     const [errors, setErrors] = useState({});
+
+    useEffect( () => {
+        validate(initialState)
+    }, [])
 
     const handleInputChange = (e) => {
         const form = { ...formData, [e.target.name]: e.target.value }
@@ -23,7 +28,11 @@ const useForm = (initialState = {}, onSubmit) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        onSubmit?.(formData);
+        if (Object.keys(errors).length > 0) {
+            alert('errores: ' + JSON.stringify(errors))
+        } else {
+            onSubmit?.(formData);
+        }
     }
 
     return { formData, handleInputChange, handleSubmit, errors };
