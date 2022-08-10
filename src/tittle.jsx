@@ -13,7 +13,7 @@ function Title({ text }) {
     return (
         <div>
             <p>{variable}</p>
-            <code>{text != '' ? text : 'cargando'}</code>
+            <code>{text !== '' ? text : 'cargando'}</code>
         </div>
     );
 }
