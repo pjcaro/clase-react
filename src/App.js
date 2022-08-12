@@ -1,30 +1,16 @@
 import "./App.css";
 import React from "react";
-import Title from "./tittle";
-import Form from "./form";
+import TaskList from "./pages/task_list";
 
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
+ function App() {
+  return (
+    <div className="App">
+      <TaskList/>
+    </div>
+  );
+}
 
-class App extends React.Component {
+/*class App extends React.Component {
   constructor(props) {
     super(props);
 
@@ -69,6 +55,6 @@ class App extends React.Component {
       </React.Fragment>
     );
   }
-}
+}*/
 
 export default App;
