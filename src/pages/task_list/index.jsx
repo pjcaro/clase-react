@@ -29,10 +29,10 @@ const TaskList = () => {
   const renderLoading = () => <h1> Cargando...</h1>;
 
   const renderTask = (task) => (
-    <Link 
-    to={`/detail/${task._id}`} 
-    key={task._id} 
-    className="task-link">
+    <Link
+      to={`/detail/${task._id}`}
+      key={task._id}
+      className="task-link">
       <TaskCard task={task} />
     </Link>
   );
@@ -49,6 +49,9 @@ const TaskList = () => {
       <button className="button" type="reload" onClick={getTasks}>
         Recargar lista{" "}
       </button>
+      <Link to="create-task">
+        <button className='button' type='newTask'>New Task</button>
+      </Link>
     </div>
   );
 

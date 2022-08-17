@@ -18,4 +18,15 @@ const getTaskById = (id) =>
     }),
   }).then((response) => response.json());
 
-export { getTaskList, getTaskById };
+const createTask = (data) =>
+  fetch(`${BASE_URL}/task`, {
+    body: JSON.stringify(data),
+    method: "post",
+    headers: new Headers({
+      Authorization: TOKEN,
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    }),
+  }).then((response) => response.json());
+
+export { getTaskList, getTaskById, createTask };

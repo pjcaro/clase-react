@@ -3,6 +3,7 @@ import React from "react";
 import TaskList from "./pages/task_list";
 import { Route, Routes } from "react-router-dom";
 import TaskDetail from "./pages/task_detail";
+import CreateTask from "./pages/create_task";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<TaskList />} />
         <Route path="detail/:id" element={<TaskDetail/>} />
+        <Route path="create-task" element={<CreateTask/>}/>
       </Routes>
     </div>
   );
