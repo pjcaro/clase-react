@@ -1,11 +1,16 @@
 import "./App.css";
 import React from "react";
 import TaskList from "./pages/task_list";
+import { Route, Routes } from "react-router-dom";
+import TaskDetail from "./pages/task_detail";
 
- function App() {
+function App() {
   return (
     <div className="App">
-      <TaskList/>
+      <Routes>
+        <Route path="/" element={<TaskList />} />
+        <Route path="detail/:id" element={<TaskDetail/>} />
+      </Routes>
     </div>
   );
 }
