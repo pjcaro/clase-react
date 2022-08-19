@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import TaskCard from "../../components/task_card";
-import { getTaskList } from "../../services/api";
+import { deleteTask, getTaskList } from "../../services/api";
 import "./index.css";
 
 const TaskList = () => {
@@ -28,12 +28,39 @@ const TaskList = () => {
 
   const renderLoading = () => <h1> Cargando...</h1>;
 
+  const onDeleteTask = (event,id) => {
+      event.preventDefault();
+      const proced = window.confirm("Estas seguro que quieres eliminar esta tarea?");
+      if(proced){
+          setIsLoading(true);
+          deleteTask(id)
+          .then((res) => {
+              if(res.success){
+                  getTasks()
+              }
+          })
+          .catch((error)=> {
+              console.log(error)
+          })
+          .finally(() => setIsLoading(false))
+      }else{
+          console.log("no hacer nada")
+      }
+  }
+
+  const renderDeleteTask = (id) => {
+      return( 
+          <button onClick={(e) => onDeleteTask(e, id)}>Eliminar tarea </button>
+      )
+  }
+ 
   const renderTask = (task) => (
     <Link
       to={`/detail/${task._id}`}
       key={task._id}
       className="task-link">
       <TaskCard task={task} />
+      {renderDeleteTask(task._id)}
     </Link>
   );
 

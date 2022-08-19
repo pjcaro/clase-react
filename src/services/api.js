@@ -40,4 +40,14 @@ const editTask = (data, id) =>
     }),
   }).then((response) => response.json());
 
-export { getTaskList, getTaskById, createTask, editTask };
+  const deleteTask = (id) => 
+  fetch(`${BASE_URL}/task/${id}`,{
+    method:"delete",
+    headers: new Headers({
+      Authorization: TOKEN,
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    }),
+  }).then((response) => response.json());
+
+export { getTaskList, getTaskById, createTask, editTask, deleteTask };
