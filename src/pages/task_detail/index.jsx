@@ -2,13 +2,14 @@ import './index.css';
 import { getTaskById } from '../../services/api';
 import { useEffect, useState } from 'react';
 import TaskCard from '../../components/task_card';
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 const TaskDetail = () => {
 
     const [task, setTask] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const params = useParams()
+    const navigate = useNavigate()
 
     useEffect(() => {
         getTask()
@@ -42,13 +43,20 @@ const TaskDetail = () => {
         </Link>
     )
 
+    const navigateToEdit = () => {
+        navigate(`/edit-task/${params.id}`)
+    }
+
+    const editTaskButton = () => (
+        <button onClick={navigateToEdit} className='button'>Edit task</button>
+    )
 
     const renderActions = () => (
         <>
             {renderBackButton()}
+            {editTaskButton()}
         </>
     )
-
 
     const renderList = () => (
         <>
@@ -56,6 +64,7 @@ const TaskDetail = () => {
             {renderActions()}
         </>
     )
+    
 
     return isLoading ? renderLoading() : renderList()
 }
